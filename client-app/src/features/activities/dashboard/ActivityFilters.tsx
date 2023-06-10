@@ -10,7 +10,7 @@ export default function ActivityFilters() {
                 <Header icon='filter' attached color="green" content='Filtrera' />
                 <Menu.Item content='Alla aktiviteter'/>
                 <Menu.Item content='Jag deltar'/>
-                <Menu.Item content='Jag äger'/>
+                <Menu.Item content='Jag publicerar'/>
             </Menu>
             <Header />
             <Calendar />
