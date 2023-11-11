@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import { Activity, ActivityFormValues } from '../models/activity';
 import { User, UserFormValues } from '../models/user';
-import { config } from 'process';
 import { store } from '../stores/store';
+import { Photo, Profile } from '../models/profile';
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
-      setTimeout(resolve, delay)
+      setTimeout(resolve, delay);
     })
 }
 
@@ -52,9 +52,24 @@ const Account = {
     register: (user: UserFormValues) => requests.post<User>('/account/register', user)
 }
 
+const Profiles = {
+    get: (username: string) => requests.get<Profile>(`/profiles/${username}`),
+    uploadPhoto: (file: Blob) => {
+        let formData = new FormData();
+        formData.append('File', file);
+        return axios.post<Photo>('photos', formData, {
+            headers: {'Content-Type': 'multipart/form-data'}
+        })
+    },
+
+    setMainPhoto: (id: string) => requests.post(`/photos/${id}/setMain`, {}),
+    deletePhoto: (id: string) => requests.del(`/photos/${id}`)
+}
+
 const agent = {
     Activities,
-    Account
+    Account, 
+    Profiles
 }
 
 export default agent;
