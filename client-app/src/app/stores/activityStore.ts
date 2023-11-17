@@ -1,10 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { Activity, ActivityFormValues } from "../models/activity";
 import agent from "../api/agent";
-import {v4 as uuid} from 'uuid';
 import { format } from "date-fns";
 import { store } from "./store";
-import { act } from "@testing-library/react";
 import { Profile } from "../models/profile";
 
 export default class ActivityStore {
@@ -191,6 +189,17 @@ export default class ActivityStore {
         } finally {
             runInAction(() => this.loading = false);
         }
+    }
+
+    updateAttendeeFollowing = (username: string) => {
+        this.activityRegistry.forEach(activity => {
+            activity.attendees.forEach((attendee: Profile) => {
+                if (attendee.username === username) {
+                    attendee.following ? attendee.followersCount-- : attendee.followersCount++;
+                    attendee.following = !attendee.following;
+                }
+            })
+        })
     }
 
     clearSelectedActivity = () => {

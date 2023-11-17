@@ -4,18 +4,22 @@ import ProfilePhotos from "./ProfilePhotos";
 import { Profile } from "../../app/models/profile";
 import { observer } from "mobx-react-lite";
 import ProfileAbout from "./ProfileAbout";
+import ProfileFollowings from "./ProfileFollowings";
+import { useStore } from "../../app/stores/store";
 
 interface Props {
     profile: Profile;
 }
 
 export default observer(function ProfileContent({profile}: Props) {
+    const {profileStore} = useStore();
+
     const panes = [
         {menuItem: 'Om', render: () => <ProfileAbout />},
         {menuItem: 'Bilder', render: () => <ProfilePhotos profile={profile}/>},
         {menuItem: 'Evenemang', render: () => <Tab.Pane>Evenemang Innehåll</Tab.Pane>},
-        {menuItem: 'Följare', render: () => <Tab.Pane>Följare Innehåll</Tab.Pane>},
-        {menuItem: 'Följer', render: () => <Tab.Pane>Följer Innehåll</Tab.Pane>}
+        {menuItem: 'Följare', render: () => <ProfileFollowings />},
+        {menuItem: 'Följer', render: () => <ProfileFollowings />} ,
     ];
 
     return (
@@ -23,6 +27,7 @@ export default observer(function ProfileContent({profile}: Props) {
            menu={{fluid: true, vertical: true}}
            menuPosition="right"
            panes={panes}
+           onTabChange={(_, data) => profileStore.setActiveTab(data.activeIndex)}
         />
     )
 })
