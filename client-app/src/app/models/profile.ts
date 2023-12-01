@@ -25,7 +25,7 @@ export class Profile implements IProfile {
     followersCount= 0;
     followingCount= 0;
     following= false;
-    photos?: Photo[]
+    photos?: Photo[];
 }
 
 export interface Photo {

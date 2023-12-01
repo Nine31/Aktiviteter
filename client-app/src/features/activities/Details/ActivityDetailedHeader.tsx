@@ -43,7 +43,7 @@ export default observer (function ActivityDetailedHeader({activity}: Props) {
                                 />
                                 <p>{format(activity.date!, 'yyyy MMM dd')}</p>
                                 <p>
-                                    Publicerades av <strong><Link to={`/profiles/${activity.host?.username}`}>{activity.host?.displayName}</Link></strong>
+                                    Publicerades av <strong><Link to={`/profil/${activity.host?.username}`}>{activity.host?.displayName}</Link></strong>
                                 </p>
                             </Item.Content>
                         </Item>

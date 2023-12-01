@@ -14,15 +14,15 @@ export default observer(function NavBar() {
                     <img src="/assets/logo.png" alt="logo" style={{marginRight: '10px'}}/>
                     Gå ihop
                 </Menu.Item>
-                <Menu.Item as={NavLink} to='/activities' name="Aktiviteter"/>
+                <Menu.Item as={NavLink} to='/aktiviteter' name="Aktiviteter"/>
                 <Menu.Item>
-                    <Button as={NavLink} to='/createActivity' positive content='Skapa Aktivitet' />
+                    <Button as={NavLink} to='/skapaAktivitet' positive content='Skapa Aktivitet' />
                 </Menu.Item>
                 <MenuItem position='right'>
                     <Image src={user?.image || '/assets/user.png'} avatar spaced='right' />
                     <Dropdown pointing='top left' text={user?.displayName}>
                         <Dropdown.Menu>
-                           <Dropdown.Item as={Link} to={`/profiles/${user?.username}`} 
+                           <Dropdown.Item as={Link} to={`/profil/${user?.username}`} 
                                 text='Min Profil' icon='user' />
                            <Dropdown.Item onClick={logout} text='Logga ut' icon='power' />
                         </Dropdown.Menu>

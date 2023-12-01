@@ -42,9 +42,9 @@ export default observer(function ActivityForm() {
     function handleFormSubmit(activity: ActivityFormValues) {
         if (!activity.id) {
             activity.id = uuid();
-            createActivity(activity).then(() => navigate(`/activities/${activity.id}`))
+            createActivity(activity).then(() => navigate(`/aktiviteter/${activity.id}`))
         } else {
-            updateActivity(activity).then(() => navigate(`/activities/${activity.id}`))
+            updateActivity(activity).then(() => navigate(`/aktiviteter/${activity.id}`))
         }
     }
 
@@ -81,7 +81,7 @@ export default observer(function ActivityForm() {
                             content='Bekräfta' 
                             
                         />
-                        <Button as={Link} to='/activities' floated='right' type='button' content='Avbryt'/> 
+                        <Button as={Link} to='/aktiviteter' floated='right' type='button' content='Avbryt'/> 
                 </Form>
                 )}
 

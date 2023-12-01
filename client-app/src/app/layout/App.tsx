@@ -1,7 +1,7 @@
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import { observer } from 'mobx-react-lite';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import HomePage from '../../features/activities/home/HomePage';
 import { useStore } from '../stores/store';
 import { useEffect } from 'react';
@@ -32,6 +32,7 @@ function App() {
 
   return (
     <>
+        <ScrollRestoration />
         <ModalContainer />
         {location.pathname === '/' ? <HomePage /> : (
           <>

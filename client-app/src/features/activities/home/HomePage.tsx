@@ -17,7 +17,7 @@ export default observer(function HomePage() {
                 {userStore.isLoggedIn ? (
                   <>
                         <Header as='h2' inverted content='Välkommen till Reaktiviteter' />
-                        <Button as={Link} to='/activities' size="huge" inverted>
+                        <Button as={Link} to='/aktiviteter' size="huge" inverted>
                                 Gå till Aktiviteter
                         </Button>
                   </>

@@ -22,10 +22,10 @@ export default function ActivityListItem({activity}: Props) {
                         <Item.Image style={{marginBottom: 4}} size="tiny" circular src={activity.host?.image
                                     || '/assets/user.png'}/>
                         <Item.Content>
-                            <Item.Header as={Link} to={`/activities/${activity.id}`}>
+                            <Item.Header as={Link} to={`/aktiviteter/${activity.id}`}>
                                 {activity.title}
                         </Item.Header>
-                        <Item.Description>Skapad av <Link to={`/profiles/${activity.hostUsername}`}>{activity.host?.displayName}</Link></Item.Description>
+                        <Item.Description>Skapad av <Link to={`/profil/${activity.hostUsername}`}>{activity.host?.displayName}</Link></Item.Description>
                         {activity.isHost && (
                             <Item.Description>
                                 <Label basic color="orange">
@@ -57,7 +57,7 @@ export default function ActivityListItem({activity}: Props) {
                 <span>{activity.description}</span>
                 <Button
                     as={Link}
-                    to={`/activities/${activity.id}`}
+                    to={`/aktiviteter/${activity.id}`}
                     color='blue'
                     floated="right"
                     content='Visa'
